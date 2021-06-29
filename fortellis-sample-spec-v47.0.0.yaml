@@ -43,6 +43,9 @@ securityDefinitions:
     authorizationUrl: https://identity.fortellis.io/oauth2/
     scopes:
       anonymous: Permissions to query and read parts
+security:
+  - permission-model:
+    - 'anonymous'
 # Remove the host. Functionally, this will provide no information on the Fortellis platform. Fortellis solutions call api.fortellis.io/basePath. Fortellis routes the calls to the providerURL/basePath. If you use the app.swaggerhub.com website, you can test the information in your API calls with a solutions before you have completely built the API, but delete the host information before submitting the spec to Fortellis (Find out if this is true and if the API actually works).
 
 host: api.fortellis.io
@@ -60,6 +63,8 @@ paths:
         - $ref: "#/parameters/header.Pididle"
         - $ref: "#/parameters/header.Organization"
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/query.email"
       consumes:
         - application/json
@@ -93,6 +98,8 @@ paths:
         - $ref: "#/parameters/header.Organization"
         - $ref: "#/parameters/path.productNumber"
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
       consumes:
         - application/json
       produces:
@@ -118,6 +125,8 @@ paths:
       parameters:
         - $ref: "#/parameters/path.productNumber"
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
       consumes:
         - application/json
       produces:
@@ -142,6 +151,8 @@ paths:
       operationId: healthMonitor
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
       consumes:
         - application/json
       produces:
@@ -164,7 +175,22 @@ parameters:
     in: header
     required: true
     type: string
+    format: guid
     description: A correlation ID that should be returned back to the caller to indicate the return of the given request
+  header.Subscription-Id:
+    name: Subscription-Id
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+  header.Authorization:
+    name: Authorization
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
   header.Pididle:
     name: User-Id
     in: header

@@ -33,6 +33,9 @@ securityDefinitions:
     authorizationUrl: https://identity.fortellis.io/oauth2/
     scopes:
       anonymous: Permissions to query and read parts
+security:
+  - permission-model:
+    - 'anonymous'
 host: api.fortellis.io
 basePath: /service/sessions/v4/
 schemes: 
@@ -59,6 +62,8 @@ paths:
           $ref: "#/responses/Forbidden"
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/header.Content-Type"
         - $ref: "#/parameters/body.CreateBookingSessionPayload"
   /booking-sessions/{bookingSessionId}/items:
@@ -79,6 +84,8 @@ paths:
           $ref: "#/responses/BadRequest"
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/header.Content-Type"
         - $ref: "#/parameters/path.bookingSessionId"
         - $ref: "#/parameters/body.AddItemPayload"
@@ -94,6 +101,8 @@ paths:
         - application/json
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/path.bookingSessionId"
       responses:
         '200':
@@ -128,6 +137,8 @@ paths:
           $ref: "#/responses/NotFound"
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/header.Content-Type"
         - $ref: "#/parameters/path.bookingSessionId"
         - $ref: "#/parameters/path.itemId"
@@ -155,6 +166,8 @@ paths:
           $ref: "#/responses/Gone"
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/path.bookingSessionId"
         - $ref: "#/parameters/path.itemId"
     delete:
@@ -178,6 +191,8 @@ paths:
           $ref: "#/responses/NotFound"
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/header.Content-Type"
         - $ref: "#/parameters/path.bookingSessionId"
         - $ref: "#/parameters/path.itemId"
@@ -205,6 +220,8 @@ paths:
           $ref: "#/responses/Gone"
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/path.bookingSessionId"
   /booking-sessions/{bookingSessionId}/available-stores/{storeId}/slots:
     get:
@@ -230,6 +247,8 @@ paths:
           $ref: "#/responses/Gone"
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/path.bookingSessionId"
         - $ref: "#/parameters/path.storeId"
   /booking-sessions/{bookingSessionId}/available-stores/{storeId}/slots/{slotId}:
@@ -256,6 +275,8 @@ paths:
           $ref: "#/responses/Gone"
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/path.bookingSessionId"
         - $ref: "#/parameters/path.storeId"
         - $ref: "#/parameters/path.slotId"
@@ -282,6 +303,8 @@ paths:
           $ref: "#/responses/Gone"
       parameters:
         - $ref: "#/parameters/header.Request-Id"
+        - $ref: "#/parameters/header.Subscription-Id"
+        - $ref: "#/parameters/header.Authorization"
         - $ref: "#/parameters/header.Content-Type"
         - $ref: "#/parameters/path.bookingSessionId"
         - $ref: "#/parameters/path.storeId"
@@ -293,6 +316,20 @@ parameters:
     type: string
     in: header
     description: A correlation ID that should be returned back to the caller to indicate the return of the given request
+  header.Subscription-Id:
+    name: Subscription-Id
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+  header.Authorization:
+    name: Authorization
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
   header.Content-Type:
     description: This field shows the content type that the client sent. 
     name: Content-Type
