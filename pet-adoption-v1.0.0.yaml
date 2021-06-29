@@ -22,6 +22,9 @@ securityDefinitions:
     scopes:
       pets.adopt: permission to query, read, and adopt pets
       pets.manage: permission to add, modify, and remove pets
+security:
+  - permission-model:
+    - 'anonymous'
 
 paths:
   /pets:
@@ -33,6 +36,7 @@ paths:
         - adopt
       parameters:
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
         - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/query.name'
         - $ref: '#/parameters/query.breed'
@@ -62,6 +66,7 @@ paths:
         - manage
       parameters:
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
         - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/body.AddUpdatePet'
       consumes:
@@ -89,6 +94,7 @@ paths:
         - adopt
       parameters:
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
         - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/path.petId'
       consumes:
@@ -117,6 +123,7 @@ paths:
         - adopt update
       parameters:
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
         - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/path.petId'
         - $ref: '#/parameters/body.AddUpdatePet'
@@ -148,6 +155,7 @@ paths:
         - adopt delete
       parameters:
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
         - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/path.petId'
       consumes:
@@ -181,6 +189,14 @@ parameters:
       A correlation ID that should be returned back to the caller to 
       indicate the return of the given request
 
+  header.Subscription-Id:
+    name: Subscription-Id
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+    
   header.Authorization:
     name: Authorization
     in: header

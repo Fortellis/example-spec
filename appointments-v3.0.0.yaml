@@ -23,6 +23,9 @@ securityDefinitions:
     authorizationUrl: https://identity.fortellis.io/oauth2/
     scopes:
       anonymous: Create, Query, Update, and Delete appointments
+security:
+  - permission-model:
+    - 'anonymous'
 
 host: fortellis.io
 basePath: /sales/notification/v3
@@ -48,6 +51,8 @@ paths:
         - $ref: '#/parameters/header.If-None-Match'
         - $ref: '#/parameters/header.Prefer'
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
+        - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/query.dateTimeInterval'
         - $ref: '#/parameters/query.vehicleHref'
         - $ref: '#/parameters/query.customerHref'
@@ -80,6 +85,8 @@ paths:
         - $ref: '#/parameters/header.If-None-Match'
         - $ref: '#/parameters/header.Prefer'
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
+        - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/body.CreateRequest'
       produces:
         - application/json
@@ -110,6 +117,8 @@ paths:
         - $ref: '#/parameters/header.If-None-Match'
         - $ref: '#/parameters/header.Prefer'
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
+        - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/path.appointmentId'
       produces:
         - application/json
@@ -141,6 +150,8 @@ paths:
         - $ref: '#/parameters/header.If-None-Match'
         - $ref: '#/parameters/header.Prefer'
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
+        - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/path.appointmentId'
         - $ref: '#/parameters/body.UpdateRequest'
       produces:
@@ -173,6 +184,8 @@ paths:
         - $ref: '#/parameters/header.If-None-Match'
         - $ref: '#/parameters/header.Prefer'
         - $ref: '#/parameters/header.Request-Id'
+        - $ref: '#/parameters/header.Subscription-Id'
+        - $ref: '#/parameters/header.Authorization'
         - $ref: '#/parameters/path.appointmentId'
         - $ref: '#/parameters/body.CancelRequest'
       produces:
@@ -294,12 +307,29 @@ parameters:
     description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
 
   header.Request-Id:
-    description: You must include the Request-Id in every call to track the same call across systems.
     name: Request-Id
     in: header
     required: true
     type: string
     format: guid
+    description: You must include the Request-Id in every call to track the same call across systems.
+
+  header.Subscription-Id:
+    name: Subscription-Id
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+    
+  header.Authorization:
+    name: Authorization
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+
   query.page:
     name: page
     in: query
