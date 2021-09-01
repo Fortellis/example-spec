@@ -32,7 +32,8 @@ basePath: /sales/notification/v3
 
 schemes:
   - https
-
+tags:
+  - Testing Tag
 paths:
   /:
     get:
