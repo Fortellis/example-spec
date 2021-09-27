@@ -20,6 +20,8 @@ host: api.fortellis.io
 basePath: /documents/sessions/v22
 schemes:
   - https
+tags:
+  - Testing Tag
 securityDefinitions: 
   permission-model: 
     type: oauth2

@@ -35,7 +35,8 @@ basePath: /sales/parts-store/v47
 
 schemes:
   - https
-
+tags:
+  - Testing Tag
 securityDefinitions:
   permission-model:
     type: oauth2

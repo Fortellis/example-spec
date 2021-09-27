@@ -36,6 +36,8 @@ securityDefinitions:
 security:
   - permission-model:
     - 'anonymous'
+tags:
+  - Testing Tag
 host: api.fortellis.io
 basePath: /service/sessions/v4/
 schemes: 

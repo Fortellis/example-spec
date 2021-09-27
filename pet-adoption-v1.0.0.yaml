@@ -25,7 +25,8 @@ securityDefinitions:
 security:
   - permission-model:
     - 'anonymous'
-
+tags:
+  - Testing Tag
 paths:
   /pets:
     get:
