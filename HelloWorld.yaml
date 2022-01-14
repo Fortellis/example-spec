@@ -3,15 +3,20 @@ id: https://helloWorldExample.com
 info: 
   title: Hello World
   version: '1.0.0'
+  description: This is the example hellos world asynchronous API.
+  contact:
+    name: Fortellis Support
+    url: https://fortellis.io/contact-us
+    email: support@fortellis.io
 servers: 
   prod-http:
-    url: https://event-relay.fortellis.io/new-home-prod
+    url: https://event-relay.fortellis.io/v2/events/new-home-prod
     protocol: http
     security:
     - fortellisOAuth2: []
 channels:
   hello/world: 
-    publish: 
+    subscribe: 
       summary: This is the hello world Async API spec.
       bindings: 
         http:
@@ -50,7 +55,6 @@ components:
                 type: string
                 description: You said hello in a language with this id.
         contentType: application/json
-        schemaFormat: application/vnd.apache.avro
         example:
           id: 6620800b-7029-4a7a-8e80-cdd852fc01c8
           number: 16
@@ -70,8 +74,8 @@ components:
       description: OAuth2 authorization and authentication using Fortrellis.
       flows:
         authorizationCode:
-          authorizationUrl: https://identity-dev.fortellis.io/oauth2/aus1ni5i9n9WkzcYa2p7//v1/authorize
-          tokenUrl: https://identity-dev.fortellis.io/oauth2/aus1ni5i9n9WkzcYa2p7/v1/token
+          authorizationUrl: https://identity.fortellis.io/oauth2/aus1p1ixy7YL8cMq02p7/v1/authorize
+          tokenUrl: https://identity.fortellis.io/oauth2/aus1p1ixy7YL8cMq02p7/v1/token
           scopes: {}
 
 
