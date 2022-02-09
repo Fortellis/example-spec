@@ -1,58 +1,10 @@
-## Spec Requirements
+# Combined Spec Repository
 
-Specs must meet the following requirements:
+From this repository, you can access the the examples specs for the following:
 
-- Follow the OpenAPI 2.0 specification
-- Include an `operationId` for Fortellis to assign a unique ID to that endpoint
-- Conform to current Fortellis standards
+* **Synchronous APIs:** In synchronous APIs, the caller sends the request and then waits for the response to that request.
+* **Asynchronous APIs:** In asynchronous APIs, the server has updated information and sends the payload to the app in response to a change on the server's end.
 
-For more information on the spec, please see the [Open API Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
+For more information on synchronous APIs specs, see [OpenAPI Guidelines](https://docs.fortellis.io/docs/tutorials/spec-provider/api-spec-introduction/).
 
-### Swagger Version
-
-Include the swagger version at the top of the file.
-
-```yaml
-swagger: '2.0'
-```
-
-### Info
-
-Include an info section with the following information:
-
-- Version
-- Title
-- Description
-- Contact
-  - Name
-  - URL
-  - Email
-
-```yaml
-info:
-  version: '47.0.0'
-  title: Fortellis Sample Application
-  description: Provide a really good description.
-  contact:
-    name: Developer Evangelists
-    url: https://fortellis.io/contact-us
-    email: support@fortellis.io
-```
-
-#### Version
-
-You must include the semantic version of the spec within the `info` section.
-
-#### Title
-
-Consider the following when creating a spec title:
-
-- You must include the title in the spec.
-- Users will see the title that you enter when you are registering the spec, not the title from the spec.
-- You should keep the title in the spec and the title in the UI consistent.
-
-#### Description
-
-- Product Name - Root Domain - API Name
-- A description of what the API does
-- The intended audience of this API
+For more information on asynchronous APIs, see [Asynchronous API Overview](https://docs.fortellis.io/docs/tutorials/event-relay/overview/).
