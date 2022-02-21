@@ -1,4 +1,4 @@
-## Spec Requirements
+# Spec Requirements
 
 Specs must meet the following requirements:
 
@@ -8,7 +8,7 @@ Specs must meet the following requirements:
 
 For more information on the spec, please see the [Open API Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
 
-### Swagger Version
+## Swagger Version
 
 Include the swagger version at the top of the file.
 
@@ -16,7 +16,7 @@ Include the swagger version at the top of the file.
 swagger: '2.0'
 ```
 
-### Info
+## Info
 
 Include an info section with the following information:
 
@@ -39,19 +39,18 @@ info:
     email: support@fortellis.io
 ```
 
-#### Version
+### Version
 
 You must include the semantic version of the spec within the `info` section.
 
-#### Title
+### Title
 
 Consider the following when creating a spec title:
 
 - You must include the title in the spec.
-- Users will see the title that you enter when you are registering the spec, not the title from the spec.
-- You should keep the title in the spec and the title in the UI consistent.
+- Users see the title from the spec when they view your API on Fortellis.
 
-#### Description
+### Description
 
 - Product Name - Root Domain - API Name
 - A description of what the API does
