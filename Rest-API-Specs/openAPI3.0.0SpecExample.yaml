@@ -14,8 +14,6 @@ servers:
 tags:
   - name: Test tag
     description: "This is the description of the test tag."
-  - name: bar
-    description: "This is the bar"
 paths:
   /pets:
     get:
