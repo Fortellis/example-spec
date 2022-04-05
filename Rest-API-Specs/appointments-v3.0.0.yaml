@@ -16,16 +16,6 @@ info:
     name: Developer Evangelists
     url: https://example.com
     email: support@fortellis.io
-securityDefinitions:
-  permission-model:
-    type: oauth2
-    flow: implicit
-    authorizationUrl: https://identity.fortellis.io/oauth2/
-    scopes:
-      anonymous: Create, Query, Update, and Delete appointments
-security:
-  - permission-model:
-    - 'anonymous'
 
 host: fortellis.io
 basePath: /sales/notification/v3
@@ -33,7 +23,8 @@ basePath: /sales/notification/v3
 schemes:
   - https
 tags:
-  - Testing Tag
+  - name: Testing Tag
+    description: This is the description of the testing tag.
 paths:
   /:
     get:
