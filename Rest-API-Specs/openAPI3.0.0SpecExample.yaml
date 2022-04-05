@@ -10,7 +10,7 @@ info:
   license:
     name: MIT
 servers: 
-    - url: https://api-dev.fortellis.io/fifth3.0/spec/v1
+    - url: https://api.fortellis.io/fifth3.0/spec/v1
 tags:
   - name: Test tag
     description: "This is the description of the test tag."
