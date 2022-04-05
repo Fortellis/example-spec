@@ -26,18 +26,10 @@ info:
     name: Developer Evangelists
     url: https://fortellis.io/contact-us
     email: support@fortellis.io
-securityDefinitions:
-  permission-model:
-    type: oauth2
-    flow: implicit
-    authorizationUrl: https://identity.fortellis.io/oauth2/
-    scopes:
-      anonymous: Permissions to query and read parts
-security:
-  - permission-model:
-    - 'anonymous'
+
 tags:
-  - Testing Tag
+  - name: Testing Tag
+    description: This is the description of the testing tag.
 host: api.fortellis.io
 basePath: /service/sessions/v4/
 schemes: 

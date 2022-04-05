@@ -35,18 +35,11 @@ basePath: /sales/parts-store/v47
 
 schemes:
   - https
+
 tags:
-  - Testing Tag
-securityDefinitions:
-  permission-model:
-    type: oauth2
-    flow: implicit
-    authorizationUrl: https://identity.fortellis.io/oauth2/
-    scopes:
-      anonymous: Permissions to query and read parts
-security:
-  - permission-model:
-    - 'anonymous'
+  - name: Testing Tag
+    description: This is the description of the testing tag.
+
 # Remove the host. Functionally, this will provide no information on the Fortellis platform. Fortellis solutions call api.fortellis.io/basePath. Fortellis routes the calls to the providerURL/basePath. If you use the app.swaggerhub.com website, you can test the information in your API calls with a solutions before you have completely built the API, but delete the host information before submitting the spec to Fortellis (Find out if this is true and if the API actually works).
 
 host: api.fortellis.io

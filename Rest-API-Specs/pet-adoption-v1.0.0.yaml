@@ -14,19 +14,9 @@ basePath: /data/v1/example/pet-adoption
 schemes:
   - https
 
-securityDefinitions:
-  permission-model:
-    type: oauth2
-    flow: implicit
-    authorizationUrl: https://identity.fortellis.io/oauth2/
-    scopes:
-      pets.adopt: permission to query, read, and adopt pets
-      pets.manage: permission to add, modify, and remove pets
-security:
-  - permission-model:
-    - 'anonymous'
 tags:
-  - Testing Tag
+  - name: Testing Tag
+    description: This is the description of the testing tag.
 paths:
   /pets:
     get:

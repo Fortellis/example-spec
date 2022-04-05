@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   version: "22.0.0"
-  title: Fortellis Spec
+  title: Fortellis Spec 1234567890
   description: |
     # Testing Spec 2 - Service - Testing 2
     Provide a good description
@@ -21,17 +21,9 @@ basePath: /documents/sessions/v22
 schemes:
   - https
 tags:
-  - Testing Tag
-securityDefinitions: 
-  permission-model: 
-    type: oauth2
-    flow: implicit
-    authorizationUrl: https://identity.fortellis.io/oauth2/
-    scopes: 
-      anonymous: State what information the API gives you permissions to
-security:
-  - permission-model:
-    - 'anonymous'
+  - name: Testing Tag
+    description: This is the description of the testing tag.
+
 paths:
   /car-inventory:
     get: 
