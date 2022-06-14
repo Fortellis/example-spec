@@ -1,8 +1,8 @@
 asyncapi: 2.0.0
 id: https://helloWorldExample.com
 info: 
-  title: Hello World 34
-  version: '34.0.0'
+  title: Hello World
+  version: '1.0.0'
   description: This is the example hellos world asynchronous API.
   contact:
     name: Fortellis Support
@@ -10,7 +10,7 @@ info:
     email: support@fortellis.io
 servers: 
   prod-http:
-    url: https://event-relay.fortellis.io/v34/events/new-home-prod
+    url: https://event-relay.fortellis.io/v2/events/new-home-prod
     protocol: http
     security:
     - fortellisOAuth2: []
