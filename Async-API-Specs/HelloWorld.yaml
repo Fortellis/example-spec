@@ -1,8 +1,8 @@
 asyncapi: 2.0.0
 id: https://helloWorldExample.com
 info: 
-  title: Hello World
-  version: '1.0.0'
+  title: Hello World 34
+  version: '34.0.0'
   description: This is the example hellos world asynchronous API.
   contact:
     name: Fortellis Support
@@ -10,7 +10,7 @@ info:
     email: support@fortellis.io
 servers: 
   prod-http:
-    url: https://event-relay.fortellis.io/v2/events/new-home-prod
+    url: https://event-relay.fortellis.io/v34/events/new-home-prod
     protocol: http
     security:
     - fortellisOAuth2: []
@@ -27,6 +27,18 @@ channels:
 components:
   messages:
     HelloWorld: 
+      headers: 
+        type: object
+        properties:
+          X-Request-Id: 
+            description: The unique request ID for the event going through Fortellis to track the event across systems
+            type: string
+          Data-Owner-Id:
+            description: The data owner for the event the Asyncrhonousa API Developer is sending
+            type: string
+          partitionKey: 
+            description: The unique identifier for the partition for these events that must be delivered in order
+            type: string
       payload:
         type: object
         properties:
